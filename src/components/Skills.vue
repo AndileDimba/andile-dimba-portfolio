@@ -1,75 +1,38 @@
 <template>
   <v-container class="py-8">
-    <h1 class="text-h4 font-weight-bold mb-4">Technical Skills</h1>
-    <v-row>
-      <!-- Left Column (stacks on small screens) -->
-      <v-col cols="12" sm="12" md="6" lg="4">
-        <v-card class="mb-4" outlined>
-          <v-card-title>Programming Languages</v-card-title>
-          <v-card-text>
-            <v-chip-group column>
-              <v-chip color="primary" outlined>C#</v-chip>
-              <v-chip color="primary" outlined>Python</v-chip>
-              <v-chip color="primary" outlined>JavaScript</v-chip>
-              <v-chip color="primary" outlined>TypeScript</v-chip>
-              <v-chip color="primary" outlined>Node</v-chip>
-            </v-chip-group>
-          </v-card-text>
-        </v-card>
-        <v-card class="mb-4" outlined>
-          <v-card-title>Frameworks</v-card-title>
-          <v-card-text>
-            <v-chip-group column>
-              <v-chip color="primary" outlined>.NET</v-chip>
-              <v-chip color="primary" outlined>Vue.js</v-chip>
-              <v-chip color="primary" outlined>Angular</v-chip>
-              <v-chip color="primary" outlined>Blazor</v-chip>
-              <v-chip color="primary" outlined>React</v-chip>
-            </v-chip-group>
-          </v-card-text>
-        </v-card>
-        <v-card class="mb-4" outlined>
-          <v-card-title>Databases</v-card-title>
-          <v-card-text>
-            <v-chip-group column>
-              <v-chip color="primary" outlined>Microsoft SQL Server</v-chip>
-              <v-chip color="primary" outlined>Db2</v-chip>
-              <v-chip color="primary" outlined>PostgreSQL</v-chip>
-            </v-chip-group>
-          </v-card-text>
-        </v-card>
-      </v-col>
-
-      <!-- Right Column (stacks on small screens) -->
-      <v-col cols="12" sm="12" md="6" lg="4">
-        <v-card class="mb-4" outlined>
-          <v-card-title>Tools</v-card-title>
-          <v-card-text>
-            <v-chip-group column>
-              <v-chip color="primary" outlined>Azure DevOps</v-chip>
-              <v-chip color="primary" outlined>Docker</v-chip>
-              <v-chip color="primary" outlined>Git</v-chip>
-              <v-chip color="primary" outlined>SourceTree</v-chip>
-            </v-chip-group>
-          </v-card-text>
-        </v-card>
-        <v-card class="mb-4" outlined>
-          <v-card-title>Other</v-card-title>
-          <v-card-text>
-            <v-chip-group column>
-              <v-chip color="primary" outlined>RESTful API Design</v-chip>
-              <v-chip color="primary" outlined>HTML</v-chip>
-              <v-chip color="primary" outlined>CSS</v-chip>
-            </v-chip-group>
-          </v-card-text>
-        </v-card>
-        <v-card class="mb-4" outlined>
-          <v-card-title>Certifications</v-card-title>
-          <v-card-text>
-            <v-chip-group column>
-              <v-chip color="primary" outlined>AWS Certified Cloud Practitioner</v-chip>
-            </v-chip-group>
-          </v-card-text>
+    <v-row justify="center">
+      <v-col cols="12" md="10" lg="8">
+        <v-card outlined color="surface" class="pa-6" elevation="2" rounded>
+          <h2 class="text-h5 font-weight-bold mb-4">Technical Skills</h2>
+          <v-row>
+            <v-col
+              v-for="(category, index) in skillsCategories"
+              :key="index"
+              cols="12"
+              sm="12"
+              md="6"
+              lg="4"
+            >
+              <v-card class="mb-4" outlined>
+                <v-card-title>
+                  <v-icon left>{{ category.icon }}</v-icon>
+                  {{ category.title }}
+                </v-card-title>
+                <v-card-text>
+                  <v-chip-group column>
+                    <v-chip
+                      v-for="(skill, sIndex) in category.skills"
+                      :key="sIndex"
+                      color="primary"
+                      outlined
+                    >
+                      {{ skill }}
+                    </v-chip>
+                  </v-chip-group>
+                </v-card-text>
+              </v-card>
+            </v-col>
+          </v-row>
         </v-card>
       </v-col>
     </v-row>
@@ -79,6 +42,42 @@
 <script>
 export default {
   name: 'Skills',
-  // You can add data, methods, computed properties, etc. here if needed
+  data() {
+    return {
+      skillsCategories: [
+        {
+          title: 'Programming Languages',
+          icon: 'mdi-code-tags', // Icon for languages
+          skills: ['C#', 'Python', 'JavaScript', 'TypeScript', 'Node']
+        },
+        {
+          title: 'Frameworks',
+          icon: 'mdi-application-brackets', // Icon for frameworks
+          skills: ['.NET', 'Vue.js', 'Angular', 'Blazor', 'React']
+        },
+        {
+          title: 'Databases',
+          icon: 'mdi-database', // Icon for databases
+          skills: ['Microsoft SQL Server', 'Db2', 'PostgreSQL']
+        },
+        {
+          title: 'Tools',
+          icon: 'mdi-tools', // Icon for tools
+          skills: ['Azure DevOps', 'Docker', 'Git', 'SourceTree']
+        },
+        {
+          title: 'Other',
+          icon: 'mdi-cog', // Icon for miscellaneous
+          skills: ['RESTful API Design', 'HTML', 'CSS']
+        },
+        {
+          title: 'Certifications',
+          icon: 'mdi-certificate', // Icon for certifications
+          skills: ['AWS Certified Cloud Practitioner']
+        }
+        // Add more categories here if needed
+      ]
+    }
+  }
 }
 </script>
