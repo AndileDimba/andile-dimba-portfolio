@@ -41,7 +41,7 @@ export default {
     return {
       educationItems: [
         { title: 'Certificate in Information Technology', subtitle: 'Umuzi.org Bootcamp, 2021-2022', description: 'Focused on software engineering, algorithms, and web development. Graduated with NQF5.', color: 'primary', icon: 'mdi-school' },
-        { title: 'AWS Certified Developer', subtitle: 'Amazon Web Services, 2025', description: 'Certified in cloud development, deployment, and security best practices.', color: 'primary', icon: 'mdi-certificate' },
+        { title: 'AWS Certified Cloud Practitioner', subtitle: 'Amazon Web Services, 2025', description: 'Certified in cloud development, deployment, and security best practices.', color: 'primary', icon: 'mdi-certificate' },
       ]
     }
   }
